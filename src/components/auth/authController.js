@@ -71,11 +71,13 @@ const loginUser = async (req, res) => {
 				name: user.name,
 			});
 			req.session.jwt = jwt;
-			return res.redirect('/');
+			req.session.save(function (err) {
+				res.redirect('/');
+			});
+		} else {
+			res.locals.alert = { type: 'danger', message: 'Invalid credentials' };
+			return res.render('pages/login', { title: 'LogIn' });
 		}
-
-		res.locals.alert = { type: 'danger', message: 'Invalid credentials' };
-		return res.render('pages/login', { title: 'LogIn' });
 	} catch (err) {
 		logger.error(err);
 		res.locals.alert = { type: 'danger', message: err.name };

@@ -7,11 +7,6 @@ router.use('/auth', authRouter);
 
 router.get('/', async (req, res) => {
 	try {
-		// await User.create({
-		// 	name: 'asif',
-		// 	email: 'asf',
-		// });
-		console.log(req.cookies);
 		if (req.cookies.alert) res.locals.alert = req.cookies.alert;
 		res.render('index', {
 			title: 'Home',
