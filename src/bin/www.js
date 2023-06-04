@@ -22,7 +22,8 @@ dbConnection
 		logger.info('Db Connection established successfully');
 		dbConnection
 			.sync({
-				force: true,
+				// force: true,
+				// alter: true,
 			})
 			.then(() => {
 				server.listen(port);
@@ -35,6 +36,8 @@ dbConnection
 		logger.error(`${err.name}: Issue in connecting db`);
 		process.exit(1);
 	});
+
+// server.listen(port);
 
 server.on('error', onError);
 server.on('listening', onListening);

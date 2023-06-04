@@ -23,6 +23,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.locals.alert = undefined;
 app.use('/', indexRouter);
 app.use(xss());
 app.use(compression());

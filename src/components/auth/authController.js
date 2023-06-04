@@ -1,5 +1,5 @@
 import { handleError, handleResponse } from '../../helper/responseHandler.js';
-import { addPersionService, getPersonService } from './personService.js';
+import { addPersionService, getPersonService } from './authService.js';
 import logger from '../../core/logger.js';
 import catchAsync from '../../helper/catchAsync.js';
 
