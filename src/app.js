@@ -5,7 +5,7 @@ import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import xss from 'xss-clean';
 import cookieParser from 'cookie-parser';
-import compression from 'compression';
+import session from 'express-session';
 import { handleError } from './helper/responseHandler.js';
 import globalErrorHandler from './helper/globalErrorHandler.js';
 import indexRouter from './components/indexRouter.js';
@@ -23,10 +23,25 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+app.use(
+	session({
+		secret: process.env.SESSION_SECRET,
+		saveUninitialized: true,
+		resave: false,
+		cookie: { httpOnly: true },
+	}),
+);
+
+app.use((req, res, next) => {
+	res.locals.alert = req.session.alert;
+	delete req.session.alert;
+	next();
+});
+
 app.locals.alert = undefined;
 app.use('/', indexRouter);
 app.use(xss());
-app.use(compression());
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));

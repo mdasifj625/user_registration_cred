@@ -12,5 +12,21 @@ const createUser = async payload => {
 		throw err;
 	}
 };
+const getUser = async (email, withPassword = false) => {
+	logger.info('Inside getUser service');
+	try {
+		const attributes = ['email', 'name'];
+		if (withPassword) attributes.push('password');
+		return await User.findOne({
+			where: {
+				email,
+			},
+			attributes,
+		});
+	} catch (err) {
+		logger.error(err);
+		throw err;
+	}
+};
 
-export { createUser };
+export { createUser ,getUser};

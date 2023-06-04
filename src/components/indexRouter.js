@@ -11,6 +11,8 @@ router.get('/', async (req, res) => {
 		// 	name: 'asif',
 		// 	email: 'asf',
 		// });
+		console.log(req.cookies);
+		if (req.cookies.alert) res.locals.alert = req.cookies.alert;
 		res.render('index', {
 			title: 'Home',
 			userList: [

@@ -14,5 +14,11 @@ const signupBody = Joi.object({
 			return errors;
 		}),
 });
+const LogInBody = Joi.object({
+	email: Joi.string()
+		.email({ tlds: { allow: true } })
+		.required(),
+	password: Joi.string().min(6).max(15).required(),
+});
 
-export { signupBody };
+export { signupBody, LogInBody };
