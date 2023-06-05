@@ -32,9 +32,9 @@ const getAllUsers = async page => {
 
 		return await User.findAndCountAll({
 			where: {},
-			limit,
+			// limit,
 			order: [['createdAt', 'DESC']],
-			offset,
+			// offset,
 			attributes,
 		});
 	} catch (err) {

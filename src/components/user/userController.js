@@ -10,7 +10,8 @@ const renderHomePage = async (req, res) => {
 			count: 0,
 		};
 
-		if (isLoggedIn) userList = await getAllUsers(1, 10);
+		// currently doing client side pagination
+		if (isLoggedIn) userList = await getAllUsers(1);
 
 		return res.render('index', {
 			title: 'Home',
