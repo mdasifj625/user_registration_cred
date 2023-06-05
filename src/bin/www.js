@@ -32,12 +32,10 @@ dbConnection
 				logger.error(`${err.name}: Issue in syncing db`);
 			});
 	})
-	.catch(() => {
+	.catch(err => {
 		logger.error(`${err.name}: Issue in connecting db`);
 		process.exit(1);
 	});
-
-// server.listen(port);
 
 server.on('error', onError);
 server.on('listening', onListening);

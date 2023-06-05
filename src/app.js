@@ -40,7 +40,6 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.locals.alert = undefined;
 app.use('/', indexRouter);
 app.use(xss());
 
