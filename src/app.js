@@ -35,6 +35,7 @@ app.use(
 
 app.use((req, res, next) => {
 	res.locals.alert = req.session.alert;
+	res.locals.user = {};
 	delete req.session.alert;
 	next();
 });

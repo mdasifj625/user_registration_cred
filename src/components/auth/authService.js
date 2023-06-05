@@ -28,5 +28,25 @@ const getUser = async (email, withPassword = false) => {
 		throw err;
 	}
 };
+const getAllUsers = async page => {
+	logger.info('Inside getUser service');
+	try {
+		const attributes = ['email', 'name'];
 
-export { createUser ,getUser};
+		const limit = 10;
+		const offset = (page - 1) * limit;
+
+		return await User.findAndCountAll({
+			where: {},
+			limit,
+			order: [['createdAt', 'DESC']],
+			offset,
+			attributes,
+		});
+	} catch (err) {
+		logger.error(err);
+		throw err;
+	}
+};
+
+export { createUser, getUser, getAllUsers };

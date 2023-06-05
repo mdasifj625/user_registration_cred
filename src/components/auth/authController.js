@@ -63,7 +63,9 @@ const loginUser = async (req, res) => {
 
 		const user = await getUser(_body.email.toLowerCase(), true);
 
-		const result = comparePassword(_body.password, user.password);
+		const result = user
+			? comparePassword(_body.password, user.password)
+			: false;
 
 		if (result) {
 			const jwt = jwtHelper.generateToken({

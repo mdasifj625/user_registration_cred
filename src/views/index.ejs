@@ -30,10 +30,10 @@
 												</tr>
 											</thead>
 											<tbody>
-												<% userList.forEach(user=> { %>
+												<% userList.rows.forEach((user,index)=> { %>
 													<tr>
 														<th scope="row">
-															<%= user.id %>
+															<%= index+1 %>
 														</th>
 														<td>
 															<%= user.name %>

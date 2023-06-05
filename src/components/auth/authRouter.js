@@ -13,5 +13,10 @@ router.get('/signup', renderSignup);
 
 router.post('/login', loginUser);
 router.get('/login', renderLogIn);
+router.get('/logout', (req, res) => {
+	req.session.destroy(err => {
+		res.redirect('/');
+	});
+});
 
 export default router;
