@@ -20,7 +20,7 @@
 									<div class="card-body p-5">
 										<h2 class="text-uppercase text-center mb-5">User List</h2>
 
-										<table class="table table-striped">
+										<table class="table table-striped" id="user_table">
 											<thead>
 												<tr class="table-dark">
 													<th scope="col">#</th>
@@ -42,9 +42,9 @@
 															<%= user.email %>
 														</td>
 														<td>
-															<a href="" class="text-success me-2"><i
-																	class="fa fa-edit"></i></a>
-															<a href="" class="text-danger"><i
+															<a href="/update?email=<%= user.email %>&name=<%= user.name %>"
+																class="text-success me-2"><i class="fa fa-edit"></i></a>
+															<a href="/delete/<%= user.email %>" class="text-danger"><i
 																	class="fa fa-trash"></i></a>
 														</td>
 
