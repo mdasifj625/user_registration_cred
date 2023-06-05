@@ -40,8 +40,8 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.use('/', indexRouter);
 app.use(xss());
+app.use('/', indexRouter);
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
